@@ -6,14 +6,14 @@ on purpose: the section that uses them stays hidden until you add real content.
 
 # The four steps of every project (home and about pages).
 PROCESS_STEPS = [
-    ("Listen",
+    ("chat", "Listen",
      "A free first conversation about your goals, your questions and the decision you need to make."),
-    ("Research",
+    ("search", "Research",
      "We collect and analyse the data, in the field and from trusted sources, to uncover trends, "
      "opportunities and risks."),
-    ("Recommend",
+    ("bulb", "Recommend",
      "You get clear findings and practical recommendations, not a pile of raw data."),
-    ("Support",
+    ("people", "Support",
      "Our work doesn’t stop at the report. We stay with you as you put the recommendations into "
      "action."),
 ]

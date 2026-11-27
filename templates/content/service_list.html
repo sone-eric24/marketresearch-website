@@ -23,9 +23,9 @@
     <div class="story-list">
       {% for s in services %}
       <article class="story-card">
-        <span class="icon-badge icon-badge-lg">{% include "content/_icon.html" with name=s.icon %}</span>
+        <img class="story-card-art" src="{% with 'img/services/'|add:s.icon|add:'.svg' as art %}{% static art %}{% endwith %}" alt="" width="400" height="260" loading="lazy" decoding="async">
         <div class="story-card-body">
-          <h2 class="h3"><a href="{{ s.get_absolute_url }}">{{ s.title }}</a></h2>
+          <h2 class="h3 with-icon"><span class="icon-badge">{% include "content/_icon.html" with name=s.icon %}</span><a href="{{ s.get_absolute_url }}">{{ s.title }}</a></h2>
           {% if s.headline %}<p class="story-hook">“{{ s.headline }}”</p>{% endif %}
           <p>{{ s.summary }}</p>
           {% if s.outcome %}<p class="story-outcome"><strong>The outcome:</strong> {{ s.outcome|truncatewords:28 }}</p>{% endif %}

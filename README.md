@@ -157,8 +157,12 @@ empty on purpose: add real numbers there and the section appears on the home pag
 ### Icons and illustrations
 
 All icons are in one file, `static/img/icons.svg`, and the illustrations are
-`static/img/hero-research.svg` and `static/img/story-path.svg`. They were drawn for this
-site, so there is no licence to worry about, and they use the brand colours.
+`static/img/hero-research.svg`, `static/img/story-path.svg` and one picture per service in
+`static/img/services/` (named after the icon you pick for the service in the admin). They
+were drawn for this site, so there is no licence to worry about, and they use the brand
+colours. The service pictures are made by `tools/illustrations/make_service_art.py`.
+
+The two photos in `static/img/photos/` (a market and Yaoundé) come from the old website.
 
 ## Contact form
 

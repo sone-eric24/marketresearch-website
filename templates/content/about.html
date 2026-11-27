@@ -85,7 +85,7 @@
       <h2>Four steps, one partner from start to finish</h2>
     </div>
     <ol class="process">
-      {% for title, text in process_steps %}<li><strong>{{ title }}</strong><span>{{ text }}</span></li>{% endfor %}
+      {% for icon, title, text in process_steps %}<li><span class="process-icon">{% include "content/_icon.html" with name=icon %}</span><strong>{{ title }}</strong><span>{{ text }}</span></li>{% endfor %}
     </ol>
     <p class="center lead">We are more than a research firm. We are your partner for doing business in Cameroon with clarity and confidence.</p>
   </div>
