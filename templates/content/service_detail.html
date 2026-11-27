@@ -21,14 +21,14 @@
     <ol class="story">
       {% if service.challenge %}
       <li class="chapter chapter-challenge">
-        <p class="chapter-label">Chapter 1 · The challenge</p>
+        <p class="chapter-label">The challenge</p>
         <h2>Where you are today</h2>
         <p>{{ service.challenge }}</p>
       </li>
       {% endif %}
       {% if service.journey_steps %}
       <li class="chapter chapter-journey">
-        <p class="chapter-label">Chapter 2 · The journey</p>
+        <p class="chapter-label">The journey</p>
         <h2>How we get you there</h2>
         <ol class="journey">
           {% for title, text in service.journey_steps %}
@@ -39,7 +39,7 @@
       {% endif %}
       {% if service.outcome %}
       <li class="chapter chapter-outcome">
-        <p class="chapter-label">Chapter 3 · The outcome</p>
+        <p class="chapter-label">The outcome</p>
         <h2>What you walk away with</h2>
         <p>{{ service.outcome }}</p>
       </li>
