@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{% block title %}{{ site.name }} – Market Research Firm in Cameroon{% endblock %}</title>
-<meta name="description" content="{% block description %}{{ site.full_name }}: market research, market entry studies, business intelligence and research for nonprofits in Cameroon.{% endblock %}">
+<title>{% block title %}{{ site.name }} – Market Research in Cameroon{% endblock %}</title>
+<meta name="description" content="{% block description %}{{ site.full_name }} helps companies, investors and NGOs make confident decisions in Cameroon with market entry studies, consumer research and business intelligence.{% endblock %}">
 <link rel="canonical" href="{{ request.build_absolute_uri }}">
 <link rel="icon" href="{% static 'favicon.ico' %}" sizes="any">
 <link rel="icon" href="{% static 'img/favicon-32.png' %}" type="image/png" sizes="32x32">
@@ -26,18 +26,31 @@
 <div class="brand-stripe" aria-hidden="true"></div>
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="logo" href="{% url 'home' %}" aria-label="{{ site.name }} home">
-      <img src="{% static 'img/logo.png' %}" alt="{{ site.name }}" width="153" height="72">
+    <a class="logo" href="{% url 'home' %}">
+      <img src="{% static 'img/logo.png' %}" alt="{{ site.name }}, home" width="153" height="72">
     </a>
     {% with path=request.path %}
+    {% comment %}One menu for every screen size. On phones it folds into a "Menu" button (no JavaScript needed).{% endcomment %}
+    <details class="nav-toggle">
+      <summary>{% include "content/_icon.html" with name="menu" %}<span>Menu</span></summary>
+      <nav class="mobile-nav" aria-label="Main">
+        <a href="{% url 'home' %}"{% if path == '/' %} aria-current="page"{% endif %}>Home</a>
+        <a href="{% url 'about' %}"{% if path == '/about/' %} aria-current="page"{% endif %}>About us</a>
+        <a href="{% url 'service_list' %}"{% if '/services/' in path %} aria-current="page"{% endif %}>Services</a>
+        <a href="{% url 'casestudy_list' %}"{% if '/case-studies/' in path %} aria-current="page"{% endif %}>Case studies</a>
+        <a href="{% url 'article_list' %}"{% if '/blog/' in path %} aria-current="page"{% endif %}>Insights</a>
+        <a href="{% url 'faq' %}"{% if path == '/faq/' %} aria-current="page"{% endif %}>FAQ</a>
+        <a class="btn btn-primary" href="{% url 'contact' %}">Book a free consultation</a>
+      </nav>
+    </details>
     <nav class="main-nav" aria-label="Main">
       <a href="{% url 'home' %}"{% if path == '/' %} aria-current="page"{% endif %}>Home</a>
-      <a href="{% url 'about' %}"{% if path == '/about/' %} aria-current="page"{% endif %}>About</a>
+      <a href="{% url 'about' %}"{% if path == '/about/' %} aria-current="page"{% endif %}>About us</a>
       <a href="{% url 'service_list' %}"{% if '/services/' in path %} aria-current="page"{% endif %}>Services</a>
-      <a href="{% url 'casestudy_list' %}"{% if '/case-studies/' in path %} aria-current="page"{% endif %}>Case Studies</a>
+      <a href="{% url 'casestudy_list' %}"{% if '/case-studies/' in path %} aria-current="page"{% endif %}>Case studies</a>
       <a href="{% url 'article_list' %}"{% if '/blog/' in path %} aria-current="page"{% endif %}>Insights</a>
       <a href="{% url 'faq' %}"{% if path == '/faq/' %} aria-current="page"{% endif %}>FAQ</a>
-      <a class="btn btn-small" href="{% url 'contact' %}">Contact</a>
+      <a class="btn btn-primary btn-small" href="{% url 'contact' %}"{% if path == '/contact/' %} aria-current="page"{% endif %}>Contact us</a>
     </nav>
     {% endwith %}
   </div>
@@ -49,28 +62,29 @@
 
 <footer class="site-footer">
   <div class="wrap footer-grid">
-    <div>
-      <a class="footer-logo" href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" alt="{{ site.name }}" width="153" height="72" loading="lazy"></a>
-      <p>{{ site.tagline }}</p>
-      <p><a href="{{ site.linkedin }}" rel="noopener">LinkedIn</a> · <a href="{{ site.facebook }}" rel="noopener">Facebook</a></p>
+    <div class="footer-about">
+      <a class="footer-logo" href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" alt="{{ site.name }}, home" width="153" height="72" loading="lazy"></a>
+      <p>Market research and business intelligence for companies, investors and NGOs in Cameroon. Local knowledge, global standards.</p>
+      <p class="social"><a href="{{ site.linkedin }}" rel="noopener">LinkedIn</a> <a href="{{ site.facebook }}" rel="noopener">Facebook</a></p>
     </div>
     <div>
-      <p class="footer-title">Company</p>
+      <p class="footer-title">Explore</p>
       <ul class="plain">
         <li><a href="{% url 'about' %}">About us</a></li>
         <li><a href="{% url 'service_list' %}">Services</a></li>
         <li><a href="{% url 'casestudy_list' %}">Case studies</a></li>
         <li><a href="{% url 'article_list' %}">Insights</a></li>
+        <li><a href="{% url 'faq' %}">FAQ</a></li>
         <li><a href="{% url 'privacy' %}">Privacy policy</a></li>
       </ul>
     </div>
     <div>
-      <p class="footer-title">Contact</p>
-      <ul class="plain">
-        <li><a href="tel:{{ site.phone_link }}">{{ site.phone }}</a></li>
-        <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-        <li>{{ site.address }}</li>
-        <li>{{ site.hours_week }}<br>{{ site.hours_weekend }}</li>
+      <p class="footer-title">Talk to us</p>
+      <ul class="plain contact-list">
+        <li>{% include "content/_icon.html" with name="phone" %}<a href="tel:{{ site.phone_link }}">{{ site.phone }}</a></li>
+        <li>{% include "content/_icon.html" with name="mail" %}<a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+        <li>{% include "content/_icon.html" with name="pin" %}<span>{{ site.address }}</span></li>
+        <li>{% include "content/_icon.html" with name="clock" %}<span>{{ site.hours_week }}<br>{{ site.hours_weekend }}</span></li>
       </ul>
     </div>
   </div>

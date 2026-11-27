@@ -6,22 +6,63 @@
 <section class="page-head">
   <div class="wrap">
     <p class="eyebrow"><a href="{% url 'service_list' %}">Services</a></p>
-    <h1>{{ service.title }}</h1>
+    <div class="service-title">
+      <span class="icon-badge icon-badge-lg">{% include "content/_icon.html" with name=service.icon %}</span>
+      <h1>{{ service.title }}</h1>
+    </div>
+    {% if service.headline %}<p class="lead story-hook-lg">{{ service.headline }}</p>{% else %}<p class="lead">{{ service.summary }}</p>{% endif %}
+    <p><a class="btn btn-primary" href="{% url 'contact' %}">Talk to us about your project</a></p>
   </div>
 </section>
+
+{% if service.challenge or service.journey_steps or service.outcome %}
 <section class="section">
+  <div class="wrap narrow">
+    <ol class="story">
+      {% if service.challenge %}
+      <li class="chapter chapter-challenge">
+        <p class="chapter-label">Chapter 1 · The challenge</p>
+        <h2>Where you are today</h2>
+        <p>{{ service.challenge }}</p>
+      </li>
+      {% endif %}
+      {% if service.journey_steps %}
+      <li class="chapter chapter-journey">
+        <p class="chapter-label">Chapter 2 · The journey</p>
+        <h2>How we get you there</h2>
+        <ol class="journey">
+          {% for title, text in service.journey_steps %}
+          <li>{% if title %}<strong>{{ title }}</strong>{% endif %}<span>{{ text }}</span></li>
+          {% endfor %}
+        </ol>
+      </li>
+      {% endif %}
+      {% if service.outcome %}
+      <li class="chapter chapter-outcome">
+        <p class="chapter-label">Chapter 3 · The outcome</p>
+        <h2>What you walk away with</h2>
+        <p>{{ service.outcome }}</p>
+      </li>
+      {% endif %}
+    </ol>
+  </div>
+</section>
+{% endif %}
+
+<section class="section alt">
   <div class="wrap with-sidebar">
     <div class="prose">{{ service.body|safe }}</div>
     <aside class="sidebar">
-      <div class="box">
-        <h2 class="h3">Other services</h2>
-        <ul class="plain">{% for s in other_services %}<li><a href="{{ s.get_absolute_url }}">{{ s.title }}</a></li>{% endfor %}</ul>
-      </div>
       <div class="box box-dark">
-        <h2 class="h3">Have a question?</h2>
-        <p>Get a free consultation with our team.</p>
-        <a class="btn btn-accent" href="{% url 'contact' %}">Contact us</a>
+        <h2 class="h3">Ready to start your story?</h2>
+        <p>Tell us about your project in a free first consultation.</p>
+        <a class="btn btn-accent" href="{% url 'contact' %}">Book a free consultation</a>
+        <p class="small">Or call <a href="tel:{{ site.phone_link }}">{{ site.phone }}</a></p>
       </div>
+      <nav class="box" aria-label="Other services">
+        <h2 class="h3">Other services</h2>
+        <ul class="plain icon-list">{% for s in other_services %}<li>{% include "content/_icon.html" with name=s.icon %}<a href="{{ s.get_absolute_url }}">{{ s.title }}</a></li>{% endfor %}</ul>
+      </nav>
     </aside>
   </div>
 </section>

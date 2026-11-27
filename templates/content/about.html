@@ -1,53 +1,94 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}About us – {{ site.name }}{% endblock %}
-{% block description %}{{ site.full_name }} is a Cameroon-based market research firm combining local expertise with global research standards.{% endblock %}
+{% block description %}The story of {{ site.full_name }}: a Cameroon-based research firm that replaces guesswork with field evidence, combining local knowledge with global research standards.{% endblock %}
 {% block content %}
 <section class="page-head">
-  <div class="wrap">
-    <p class="eyebrow">Who we are</p>
-    <h1>Your gateway to market success in Cameroon</h1>
+  <div class="wrap page-head-grid">
+    <div>
+      <p class="eyebrow">About us</p>
+      <h1>We started with a simple belief: good decisions need good evidence</h1>
+      <p class="lead">{{ site.full_name }} helps startups, established companies and nonprofit organisations understand the Cameroonian market, so they can act with confidence instead of guesswork.</p>
+    </div>
+    <img class="page-head-art" src="{% static 'img/story-path.svg' %}" alt="" width="360" height="200">
   </div>
 </section>
 
 <section class="section">
   <div class="wrap narrow">
-    <p class="lead">Here at Winning Solutions Market Research Firm, we believe that every successful business decision starts with accurate insights. We are a trusted partner to startups, established companies, and nonprofit organizations.</p>
-    <p>WS Market Research specializes in delivering data-driven strategies that help our clients navigate the complexities of the Cameroonian market. Whether you're entering a new industry or expanding your footprint, we’re here to ensure your journey is informed, strategic, and impactful.</p>
+    <h2 class="visually-hidden">Our story</h2>
+    <ol class="story">
+      {% for title, text in about_story %}
+      <li class="chapter chapter-{% cycle 'challenge' 'journey' 'outcome' %}">
+        <p class="chapter-label">Chapter {{ forloop.counter }}</p>
+        <h3 class="h2">{{ title }}</h3>
+        <p>{{ text }}</p>
+      </li>
+      {% endfor %}
+    </ol>
   </div>
 </section>
 
 <section class="section alt">
   <div class="wrap grid two">
-    <div class="box"><h2>Our mission</h2><p>Empowering businesses with actionable market intelligence to unlock their full potential in Cameroon and beyond.</p></div>
-    <div class="box"><h2>Our vision</h2><p>To be the most trusted market research partner in Africa, driving innovation, growth, and sustainable success for our clients.</p></div>
+    <div class="box feature">
+      <span class="icon-badge">{% include "content/_icon.html" with name="target" %}</span>
+      <h2 class="h3">Our mission</h2>
+      <p>To give organisations the market intelligence they need to reach their full potential in Cameroon and beyond.</p>
+    </div>
+    <div class="box feature">
+      <span class="icon-badge">{% include "content/_icon.html" with name="flag" %}</span>
+      <h2 class="h3">Our vision</h2>
+      <p>To be the most trusted market research partner in Africa, driving innovation, growth and lasting success for our clients.</p>
+    </div>
   </div>
 </section>
 
 <section class="section">
   <div class="wrap">
-    <h2>Our core values</h2>
+    <div class="section-head">
+      <p class="eyebrow">What we stand for</p>
+      <h2>Our values</h2>
+    </div>
     <div class="grid four">
-      {% for title, text in core_values %}<div class="box"><h3>{{ title }}</h3><p>{{ text }}</p></div>{% endfor %}
+      {% for icon, title, text in core_values %}
+      <div class="box feature">
+        <span class="icon-badge">{% include "content/_icon.html" with name=icon %}</span>
+        <h3>{{ title }}</h3>
+        <p>{{ text }}</p>
+      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
 
 <section class="section alt">
   <div class="wrap">
-    <h2>What makes us different</h2>
+    <div class="section-head">
+      <p class="eyebrow">Why clients choose us</p>
+      <h2>What makes us different</h2>
+    </div>
     <div class="grid two">
-      {% for title, text in differentiators %}<div class="box"><h3>{{ title }}</h3><p>{{ text }}</p></div>{% endfor %}
+      {% for icon, title, text in differentiators %}
+      <div class="box feature feature-row">
+        <span class="icon-badge">{% include "content/_icon.html" with name=icon %}</span>
+        <div><h3>{{ title }}</h3><p>{{ text }}</p></div>
+      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
 
 <section class="section">
-  <div class="wrap narrow">
-    <h2>Our process</h2>
-    <ol class="steps">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">How we work</p>
+      <h2>Four steps, one partner from start to finish</h2>
+    </div>
+    <ol class="process">
       {% for title, text in process_steps %}<li><strong>{{ title }}</strong><span>{{ text }}</span></li>{% endfor %}
     </ol>
-    <p>We’re more than a market research firm—we’re your strategic partner in navigating the Cameroonian market with confidence and clarity.</p>
+    <p class="center lead">We are more than a research firm. We are your partner for doing business in Cameroon with clarity and confidence.</p>
   </div>
 </section>
 

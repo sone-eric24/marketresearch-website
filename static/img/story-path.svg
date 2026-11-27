@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 200" role="img" aria-labelledby="t">
+<title id="t">Illustration: a winding path from a question mark, through a research step, to a finish flag</title>
+<!-- Drawn in-house for WS Market Research. Free to use and edit on this site. -->
+<path d="M50 150 C 110 150, 110 60, 180 70 S 260 140, 310 60" fill="none" stroke="#303360" stroke-opacity=".25" stroke-width="10" stroke-linecap="round"/>
+<path d="M50 150 C 110 150, 110 60, 180 70 S 260 140, 310 60" fill="none" stroke="#FE7146" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round"/>
+<circle cx="50" cy="150" r="30" fill="#fff" stroke="#FE7146" stroke-width="5"/>
+<text x="50" y="163" text-anchor="middle" font-family="system-ui, sans-serif" font-size="36" font-weight="700" fill="#b8401c">?</text>
+<circle cx="180" cy="70" r="30" fill="#fff" stroke="#303360" stroke-width="5"/>
+<circle cx="176" cy="66" r="10" fill="none" stroke="#303360" stroke-width="4"/>
+<path d="M183 73l9 9" stroke="#303360" stroke-width="5" stroke-linecap="round"/>
+<circle cx="310" cy="60" r="30" fill="#006400"/>
+<path d="M300 76V44M300 44h20l-4 7 4 7h-20" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

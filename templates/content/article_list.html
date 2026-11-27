@@ -5,7 +5,8 @@
 <section class="page-head">
   <div class="wrap">
     <p class="eyebrow">Insights</p>
-    <h1>{% if category %}{{ category.name }}{% else %}Market insights from Cameroon{% endif %}</h1>
+    <h1>{% if category %}{{ category.name }}{% else %}Insights on Cameroon’s markets{% endif %}</h1>
+    {% if not category %}<p class="lead">Trends, opportunities and practical advice for investors, businesses and NGOs, from our research team.</p>{% endif %}
     {% if categories %}
     <p class="chips">
       <a href="{% url 'article_list' %}"{% if not category %} aria-current="page"{% endif %}>All</a>
@@ -17,10 +18,10 @@
 <section class="section">
   <div class="wrap">
     <div class="grid three">
-      {% for a in page %}{% include "content/_article_card.html" %}{% empty %}<p>No articles yet.</p>{% endfor %}
+      {% for a in page %}{% include "content/_article_card.html" %}{% empty %}<p>No articles here yet. Check back soon.</p>{% endfor %}
     </div>
     {% if page.has_other_pages %}
-    <nav class="pager" aria-label="Pages">
+    <nav class="pager" aria-label="Article pages">
       {% if page.has_previous %}<a href="?page={{ page.previous_page_number }}">← Newer</a>{% endif %}
       <span>Page {{ page.number }} of {{ page.paginator.num_pages }}</span>
       {% if page.has_next %}<a href="?page={{ page.next_page_number }}">Older →</a>{% endif %}

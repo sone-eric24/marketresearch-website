@@ -1,113 +1,137 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
 <section class="hero">
-  <div class="wrap">
-    <p class="eyebrow">Market research firm · Yaoundé, Cameroon</p>
-    <h1>Unlock Cameroon’s market potential with data-driven insights</h1>
-    <p class="lead">We deliver precise insights and practical strategies that help startups, established companies and nonprofit organisations reach their targets in Cameroon.</p>
-    <div class="hero-actions">
-      <a class="btn btn-accent" href="{% url 'contact' %}">Get a free consultation</a>
-      <a class="btn btn-ghost" href="{% url 'service_list' %}">Our services</a>
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <p class="eyebrow">Market research · Yaoundé, Cameroon</p>
+      <h1>Make your next move in Cameroon with confidence</h1>
+      <p class="lead">We go to the field, listen to your customers and turn what we learn into clear recommendations. Startups, international companies and NGOs use our research to decide where to invest, what to launch and how to grow.</p>
+      <div class="hero-actions">
+        <a class="btn btn-accent" href="{% url 'contact' %}">Book a free consultation</a>
+        <a class="btn btn-ghost" href="{% url 'service_list' %}">See how we help</a>
+      </div>
+      <p class="hero-note">{% include "content/_icon.html" with name="check" %}Your first consultation is free</p>
+    </div>
+    <div class="hero-art">
+      <img src="{% static 'img/hero-research.svg' %}" alt="" width="480" height="400" fetchpriority="high">
     </div>
   </div>
 </section>
 
 <section class="section">
   <div class="wrap">
-    <p class="eyebrow">What we do</p>
-    <h2>A wide range of business intelligence services</h2>
+    <div class="section-head">
+      <p class="eyebrow">Who we help</p>
+      <h2>Does this sound like you?</h2>
+      <p class="lead">Every project starts with a question that matters to someone. Here are the three we hear most.</p>
+    </div>
     <div class="grid three">
-      <div class="box">
-        <h3>Market Entry Services</h3>
-        <ul><li>Market feasibility studies</li><li>Competitive analysis</li><li>Consumer behaviour research</li></ul>
+      {% for a in audiences %}
+      <div class="box feature">
+        <span class="icon-badge">{% include "content/_icon.html" with name=a.icon %}</span>
+        <h3>{{ a.title }}</h3>
+        <p>{{ a.story }}</p>
+        <a class="more" href="{% url 'service_detail' a.slug %}">{{ a.link_text }} {% include "content/_icon.html" with name="arrow" size="sm" %}</a>
       </div>
-      <div class="box">
-        <h3>Business Intelligence</h3>
-        <ul><li>Prediction and trend forecasting</li><li>Industry trend reports</li><li>Reputation management</li></ul>
-      </div>
-      <div class="box">
-        <h3>Research for Nonprofits</h3>
-        <ul><li>Donor mapping</li><li>Social impact analysis</li><li>Needs assessments</li></ul>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
 
 <section class="section alt">
-  <div class="wrap split">
-    <div>
-      <p class="eyebrow">Who we are</p>
-      <h2>Your gateway to market success in Cameroon</h2>
-      <p>As a core mission, WS Market Research Firm works to deliver precise insights and implementable strategies to businesses. Our research solutions act as growth engines that help both startups and nonprofit organisations reach their targets.</p>
-      <p><a href="{% url 'about' %}">More about us →</a></p>
-    </div>
-    <div>
-      <h3>How we work</h3>
-      <ol class="steps">
-        {% for title, text in process_steps %}<li><strong>{{ title }}</strong><span>{{ text }}</span></li>{% endfor %}
-      </ol>
-    </div>
-  </div>
-</section>
-
-<section class="section">
   <div class="wrap">
-    <p class="eyebrow">Services at a glance</p>
-    <h2>How we can help</h2>
-    <div class="grid three">
+    <div class="section-head">
+      <p class="eyebrow">Our services</p>
+      <h2>From a question to a confident decision</h2>
+      <p class="lead">Each service follows the same story: we start from your challenge, guide you through the research, and leave you with a clear way forward.</p>
+    </div>
+    <div class="grid services">
       {% for s in services %}
-      <a class="box link-box" href="{{ s.get_absolute_url }}">
+      <a class="box link-box service-card" href="{{ s.get_absolute_url }}">
+        <span class="icon-badge">{% include "content/_icon.html" with name=s.icon %}</span>
         <h3>{{ s.title }}</h3>
         <p>{{ s.summary }}</p>
-        <span class="more">View details →</span>
+        <span class="more">Read the story {% include "content/_icon.html" with name="arrow" size="sm" %}</span>
       </a>
       {% endfor %}
     </div>
   </div>
 </section>
 
-{% if case_studies %}
-<section class="section alt">
+<section class="section">
   <div class="wrap">
-    <p class="eyebrow">Recent work</p>
-    <h2>Our latest case studies</h2>
-    <div class="grid three">
-      {% for c in case_studies %}
-      <a class="box link-box" href="{{ c.get_absolute_url }}">
-        <p class="meta">{{ c.category_list|first }}</p>
-        <h3>{{ c.title }}</h3>
-        <span class="more">Read the case study →</span>
-      </a>
-      {% endfor %}
+    <div class="section-head">
+      <p class="eyebrow">How we work</p>
+      <h2>Four simple steps, one partner from start to finish</h2>
     </div>
-    <p class="center"><a class="btn btn-ghost-dark" href="{% url 'casestudy_list' %}">All case studies</a></p>
+    <ol class="process">
+      {% for title, text in process_steps %}<li><strong>{{ title }}</strong><span>{{ text }}</span></li>{% endfor %}
+    </ol>
+  </div>
+</section>
+
+{% if key_figures %}
+<section class="figures">
+  <div class="wrap figures-grid">
+    {% for number, label in key_figures %}<p><strong>{{ number }}</strong><span>{{ label }}</span></p>{% endfor %}
   </div>
 </section>
 {% endif %}
 
+{% if case_studies %}
+<section class="section alt">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Our work</p>
+      <h2>Real questions, answered in the field</h2>
+      <p class="lead">A few of the studies we have delivered for companies and NGOs.</p>
+    </div>
+    <div class="grid three">
+      {% for c in case_studies %}
+      <a class="box link-box" href="{{ c.get_absolute_url }}">
+        <p class="tag">{{ c.category_list|first }}</p>
+        <h3>{{ c.title }}</h3>
+        <span class="more">Read the case study {% include "content/_icon.html" with name="arrow" size="sm" %}</span>
+      </a>
+      {% endfor %}
+    </div>
+    <p class="center"><a class="btn btn-outline" href="{% url 'casestudy_list' %}">See all case studies</a></p>
+  </div>
+</section>
+{% endif %}
+
+{% if testimonials %}
 <section class="section">
   <div class="wrap">
-    <p class="eyebrow">Testimonials</p>
-    <h2>What our clients say</h2>
+    <div class="section-head">
+      <p class="eyebrow">In our clients’ words</p>
+      <h2>What working with us feels like</h2>
+    </div>
     <div class="grid two">
       {% for t in testimonials %}
       <figure class="quote">
-        <blockquote>“{{ t.quote }}”</blockquote>
-        <figcaption><strong>{{ t.name }}</strong><br>{{ t.role }}</figcaption>
+        {% include "content/_icon.html" with name="quote" %}
+        <blockquote>{{ t.quote }}</blockquote>
+        <figcaption><strong>{{ t.name }}</strong>{{ t.role }}</figcaption>
       </figure>
       {% endfor %}
     </div>
   </div>
 </section>
+{% endif %}
 
 {% if articles %}
 <section class="section alt">
   <div class="wrap">
-    <p class="eyebrow">Latest insights</p>
-    <h2>From our blog</h2>
+    <div class="section-head">
+      <p class="eyebrow">Insights</p>
+      <h2>Latest from our research desk</h2>
+    </div>
     <div class="grid three">
       {% for a in articles %}{% include "content/_article_card.html" %}{% endfor %}
     </div>
+    <p class="center"><a class="btn btn-outline" href="{% url 'article_list' %}">Read all insights</a></p>
   </div>
 </section>
 {% endif %}

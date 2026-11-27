@@ -19,9 +19,9 @@
 {% if other_cases %}
 <section class="section alt">
   <div class="wrap">
-    <h2>More case studies</h2>
+    <h2>More stories from the field</h2>
     <div class="grid three">
-      {% for c in other_cases %}<a class="box link-box" href="{{ c.get_absolute_url }}"><h3>{{ c.title }}</h3><span class="more">Read →</span></a>{% endfor %}
+      {% for c in other_cases %}<a class="box link-box" href="{{ c.get_absolute_url }}"><h3>{{ c.title }}</h3><span class="more">Read the case study {% include "content/_icon.html" with name="arrow" size="sm" %}</span></a>{% endfor %}
     </div>
   </div>
 </section>

@@ -65,10 +65,35 @@ class Article(models.Model):
 
 
 class Service(models.Model):
+    """A service, told as a short client story: challenge, then journey, then outcome."""
+
+    ICON_CHOICES = [
+        ("compass", "Compass (market entry)"),
+        ("target", "Target (marketing research)"),
+        ("chart", "Chart (business intelligence)"),
+        ("chat", "Speech bubbles (consultation)"),
+        ("shield", "Shield (compliance)"),
+        ("megaphone", "Megaphone (digital marketing)"),
+        ("heart", "Heart (nonprofits)"),
+        ("search", "Magnifying glass (other research)"),
+    ]
+
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
+    icon = models.CharField(max_length=20, choices=ICON_CHOICES, default="search")
     summary = models.TextField(blank=True, help_text="One or two sentences for the services list.")
-    body = models.TextField(help_text="Service description in HTML.")
+    headline = models.CharField(
+        max_length=255, blank=True,
+        help_text="The client's situation in one sentence. Shown at the top of the service page.")
+    challenge = models.TextField(
+        blank=True, help_text="Chapter 1, the challenge: the problem the client faces (plain text).")
+    journey = models.TextField(
+        blank=True,
+        help_text="Chapter 2, the journey: one step per line, written as "
+                  "'Step title: what happens'.")
+    outcome = models.TextField(
+        blank=True, help_text="Chapter 3, the outcome: what the client walks away with (plain text).")
+    body = models.TextField(help_text="What's included, in HTML. Shown after the story.")
     order = models.PositiveIntegerField(default=0, help_text="Lower numbers appear first.")
 
     class Meta:
@@ -79,6 +104,18 @@ class Service(models.Model):
 
     def get_absolute_url(self):
         return reverse("service_detail", args=[self.slug])
+
+    @property
+    def journey_steps(self):
+        """The journey as a list of (title, text) pairs, one per non-empty line."""
+        steps = []
+        for line in self.journey.splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            title, _, text = line.partition(":")
+            steps.append((title.strip(), text.strip()) if text else ("", title.strip()))
+        return steps
 
 
 class CaseStudy(models.Model):

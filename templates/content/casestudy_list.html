@@ -1,23 +1,24 @@
 {% extends "base.html" %}
 {% block title %}Case studies – {{ site.name }}{% endblock %}
-{% block description %}Examples of our market research work in Cameroon: market entry studies, consumer surveys, competitor benchmarking and NGO research.{% endblock %}
+{% block description %}How our research helped companies and NGOs in Cameroon: market entry studies, consumer surveys, competitor benchmarking and community research.{% endblock %}
 {% block content %}
 <section class="page-head">
   <div class="wrap">
-    <p class="eyebrow">Recent work</p>
-    <h1>Case studies</h1>
+    <p class="eyebrow">Case studies</p>
+    <h1>Real questions, answered in the field</h1>
+    <p class="lead">Each study began with a client facing a decision. Read how we found the answers and what they did next.</p>
   </div>
 </section>
 <section class="section">
   <div class="wrap grid two">
     {% for c in case_studies %}
     <a class="box link-box" href="{{ c.get_absolute_url }}">
-      <p class="meta">{{ c.categories }}</p>
+      <p class="tag">{{ c.category_list|first }}</p>
       <h2 class="h3">{{ c.title }}</h2>
       <p>{{ c.summary|truncatechars:200 }}</p>
-      <span class="more">Read the case study →</span>
+      <span class="more">Read the case study {% include "content/_icon.html" with name="arrow" size="sm" %}</span>
     </a>
-    {% empty %}<p>No case studies yet.</p>
+    {% empty %}<p>New case studies are on their way. In the meantime, <a href="{% url 'contact' %}">ask us about our work</a>.</p>
     {% endfor %}
   </div>
 </section>

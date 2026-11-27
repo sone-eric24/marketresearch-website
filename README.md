@@ -137,6 +137,29 @@ FAQs, and read contact form messages. The text fields accept HTML (`<p>`, `<h2>`
 Company details (phone, email, address, hours, social links) are in
 `SITE_INFO` at the bottom of `config/settings.py`.
 
+### Service stories
+
+Each service page tells a short client story in three chapters. In the admin, open a
+service and fill in:
+
+- **Headline**: the client's situation in one sentence.
+- **Challenge**: the problem the client faces.
+- **Journey**: one step per line, written as `Step title: what happens`.
+- **Outcome**: what the client walks away with.
+- **Icon**: pick one from the list.
+
+### Home and About page text
+
+The text that is not in the admin (who we help, our story, values, process steps,
+testimonials and key figures) is in `content/site_data.py`. The **key figures** list is
+empty on purpose: add real numbers there and the section appears on the home page.
+
+### Icons and illustrations
+
+All icons are in one file, `static/img/icons.svg`, and the illustrations are
+`static/img/hero-research.svg` and `static/img/story-path.svg`. They were drawn for this
+site, so there is no licence to worry about, and they use the brand colours.
+
 ## Contact form
 
 Every message is saved in the admin under **Contact messages**. If you set the
