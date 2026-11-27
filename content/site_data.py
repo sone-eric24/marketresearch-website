@@ -44,6 +44,14 @@ AUDIENCES = [
         "link_text": "Research for nonprofits",
         "slug": "new-business-innovation",
     },
+    {
+        "icon": "globe",
+        "title": "International research agencies",
+        "story": "You have a study to run in Cameroon but no team on the ground. You need a local "
+                 "partner who can collect reliable data to your specifications.",
+        "link_text": "Field data collection",
+        "slug": "field-data-collection",
+    },
 ]
 
 # About page: our story in three short chapters (problem, answer, promise).
@@ -79,6 +87,9 @@ DIFFERENTIATORS = [
     ("layers", "Everything in one place",
      "From feasibility studies to competitor benchmarking and consumer research, one team covers "
      "the full journey."),
+    ("clipboard", "Your field partner in Cameroon",
+     "International research agencies rely on us to run their fieldwork locally, to their "
+     "methodology and standards."),
     ("flag", "Focused on results",
      "We don’t just hand over data. We give you clear recommendations and help you act on them."),
 ]

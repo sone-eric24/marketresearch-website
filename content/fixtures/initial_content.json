@@ -227,6 +227,22 @@
   }
  },
  {
+  "model": "content.service",
+  "pk": 5000,
+  "fields": {
+   "title": "Field Data Collection",
+   "slug": "field-data-collection",
+   "icon": "clipboard",
+   "summary": "Your team on the ground in Cameroon. We collect reliable field data for international research agencies and local organisations, to your specifications.",
+   "headline": "Your agency has a study to run in Cameroon, but no team on the ground.",
+   "challenge": "You have won a multi-country project, or a client needs answers from Cameroon. Flying a team in is expensive, the terrain and the culture are unfamiliar, and your client still expects clean data, on time and on budget. You need a local partner you can trust with your methodology.",
+   "journey": "Review your study: We go through your questionnaire, sample and timeline with you, and suggest adjustments so they work in the Cameroonian context.\nPrepare the field: We recruit and brief interviewers for your project and plan the fieldwork across the locations you need.\nCollect the data: Our team carries out the interviews, surveys or group discussions you specify, and keeps you updated on progress as fieldwork moves forward.\nCheck and deliver: We check the quality of the data as it comes in, then deliver it in the format you need.",
+   "outcome": "Reliable data from Cameroon, collected to your specifications and delivered on schedule, without the cost of setting up your own local operation. Your agency keeps the client relationship and the analysis; we take care of the field.",
+   "body": "<h2>What's included</h2><h3>For international research agencies</h3><ul><li>A local field partner for single-country or multi-country studies.</li><li>Adaptation of questionnaires and sampling plans to local realities.</li><li>Recruitment, briefing and supervision of field teams.</li><li>Quality checks during fieldwork and clean data at delivery.</li><li>Confidentiality: we are happy to sign your NDA.</li></ul><h3>For local companies and NGOs</h3><p>Already have a research design and only need the fieldwork done? We collect the data for you, so your team can focus on the analysis and the decisions.</p><p><em>Tell us about your study, including the methods, locations, sample size and timeline, and we will send you a detailed fieldwork proposal.</em></p>",
+   "order": 8
+  }
+ },
+ {
   "model": "content.casestudy",
   "pk": 1581,
   "fields": {
@@ -382,6 +398,15 @@
   "fields": {
    "question": "How do you protect confidential information?",
    "answer": "<p>Your information stays confidential and is handled with care. We are happy to sign a non-disclosure agreement (NDA) before you share anything sensitive.</p>",
+   "order": 10
+  }
+ },
+ {
+  "model": "content.faq",
+  "pk": 10,
+  "fields": {
+   "question": "Do you work with research agencies based outside Cameroon?",
+   "answer": "<p>Yes. International research agencies use us as their field partner in Cameroon. We adapt your questionnaire to the local context, run the fieldwork and deliver clean data to your specifications. <a href=\"/services/field-data-collection/\">See how field data collection works</a>.</p>",
    "order": 9
   }
  }
