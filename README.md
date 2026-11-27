@@ -66,26 +66,14 @@ Open http://127.0.0.1:8000. The admin is at http://127.0.0.1:8000/manage-ws/.
 
 ## Images
 
-The database backup contains the text but not the image files. In cPanel's
-**File Manager**, download these files from `public_html/wp-content/uploads/` and put
-them in `media/uploads/`, keeping the same folders (for example
-`media/uploads/2025/01/yaounde-central-ws-marketresearch.jpg`):
+The 10 images from the old site are already in this repo, in `media/uploads/`. They
+were resized to at most 1200 px wide and compressed (about 860 KB in total, down
+from 1.7 MB), so they come with the code when you `git clone` or `git pull`.
 
-```
-2022/05/market-in-cameroon.jpg
-2022/05/ngo-and-market-research.jpg
-2022/05/portfolio-6.jpg
-2022/05/portfolio-7.jpg
-2022/05/report-at-ws-market-research.avif
-2022/05/ws-report.png
-2025/01/photo-of-roundabout-in-yaounde.jpeg
-2025/01/yaounde-central-ws-marketresearch.jpg
-2025/02/pm-office.jpg
-2025/05/shopping-8042865_1280-1024x1024.png
-```
+Images you upload later through the admin are saved in `media/uploads/<year>/<month>/`.
 
-⚠️ **Copy only image files** (`.jpg`, `.png`, `.avif`). The old site was hacked, and
-hackers often hide `.php` files inside `uploads`. Never copy `.php` files.
+⚠️ The old site was hacked. Never copy `.php` files from the old `wp-content/uploads`
+folder: hackers often hide malicious code there. `.gitignore` blocks `.php` files in `media/`.
 
 Tip for slow networks: before uploading an image, make it smaller (for example
 1200 px wide) with a free tool such as https://squoosh.app.

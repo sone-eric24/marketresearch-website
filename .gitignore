@@ -9,10 +9,11 @@ env/
 db.sqlite3
 db.sqlite3-journal
 staticfiles/
+# Website images in media/uploads are kept in git so `git pull` deploys them.
+# Anything else in media/ (and any PHP file anywhere in it) is ignored.
 media/*
 !media/uploads/
-media/uploads/*
-!media/uploads/.gitkeep
+media/**/*.php
 
 # Secrets – never commit these
 .env
