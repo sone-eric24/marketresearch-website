@@ -1,22 +1,39 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}Services – {{ site.name }}{% endblock %}
-{% block description %}Market entry studies, marketing research, business intelligence, consultation, regulatory compliance support, digital marketing and research for nonprofits in Cameroon.{% endblock %}
+{% block description %}Market entry studies, marketing research, business intelligence, consultation, regulatory compliance, digital marketing and research for NGOs in Cameroon.{% endblock %}
 {% block content %}
 <section class="page-head">
-  <div class="wrap">
-    <p class="eyebrow">Our services</p>
-    <h1>We provide a wide range of business services</h1>
+  <div class="wrap page-head-grid">
+    <div>
+      <p class="eyebrow">Our services</p>
+      <h1>Every project is a story. Yours starts with a question.</h1>
+      <p class="lead">Behind every study is someone with a decision to make. Find the situation that looks like yours and see how we get you from uncertainty to a clear way forward.</p>
+    </div>
+    <img class="page-head-art" src="{% static 'img/story-path.svg' %}" alt="" width="360" height="200">
   </div>
 </section>
 <section class="section">
-  <div class="wrap grid two">
-    {% for s in services %}
-    <a class="box link-box" href="{{ s.get_absolute_url }}">
-      <h2 class="h3">{{ s.title }}</h2>
-      <p>{{ s.summary }}</p>
-      <span class="more">View details →</span>
-    </a>
-    {% endfor %}
+  <div class="wrap">
+    <ol class="story-legend" aria-label="How each service story is told">
+      <li><span class="dot dot-challenge"></span><strong>The challenge</strong> you face</li>
+      <li><span class="dot dot-journey"></span><strong>The journey</strong> we take together</li>
+      <li><span class="dot dot-outcome"></span><strong>The outcome</strong> you walk away with</li>
+    </ol>
+    <div class="story-list">
+      {% for s in services %}
+      <article class="story-card">
+        <span class="icon-badge icon-badge-lg">{% include "content/_icon.html" with name=s.icon %}</span>
+        <div class="story-card-body">
+          <h2 class="h3"><a href="{{ s.get_absolute_url }}">{{ s.title }}</a></h2>
+          {% if s.headline %}<p class="story-hook">“{{ s.headline }}”</p>{% endif %}
+          <p>{{ s.summary }}</p>
+          {% if s.outcome %}<p class="story-outcome"><strong>The outcome:</strong> {{ s.outcome|truncatewords:28 }}</p>{% endif %}
+          <a class="more" href="{{ s.get_absolute_url }}" aria-label="Read the full story: {{ s.title }}">Read the full story {% include "content/_icon.html" with name="arrow" size="sm" %}</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
   </div>
 </section>
 {% include "content/_cta.html" %}

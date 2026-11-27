@@ -19,9 +19,17 @@ class ArticleAdmin(admin.ModelAdmin):
 
 @admin.register(Service)
 class ServiceAdmin(admin.ModelAdmin):
-    list_display = ("title", "order")
+    list_display = ("title", "icon", "order")
     list_editable = ("order",)
     prepopulated_fields = {"slug": ("title",)}
+    fieldsets = [
+        (None, {"fields": ["title", "slug", "icon", "order", "summary"]}),
+        ("The story (challenge, journey, outcome)", {
+            "description": "Each service page tells a short client story in three chapters.",
+            "fields": ["headline", "challenge", "journey", "outcome"],
+        }),
+        ("What's included", {"fields": ["body"]}),
+    ]
 
 
 @admin.register(CaseStudy)

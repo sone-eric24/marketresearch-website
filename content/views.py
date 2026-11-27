@@ -31,6 +31,8 @@ def home(request):
         "articles": Article.published.select_related("category")[:3],
         "case_studies": CaseStudy.objects.all()[:3],
         "process_steps": site_data.PROCESS_STEPS,
+        "audiences": site_data.AUDIENCES,
+        "key_figures": site_data.KEY_FIGURES,
         "testimonials": site_data.TESTIMONIALS,
     })
 
@@ -39,6 +41,7 @@ def home(request):
 @cached
 def about(request):
     return render(request, "content/about.html", {
+        "about_story": site_data.ABOUT_STORY,
         "core_values": site_data.CORE_VALUES,
         "differentiators": site_data.DIFFERENTIATORS,
         "process_steps": site_data.PROCESS_STEPS,
@@ -131,7 +134,7 @@ def contact(request):
                 )
             except Exception:  # the message is saved in the admin anyway
                 logger.exception("Could not email contact message %s", msg.pk)
-            messages.success(request, "Thank you! Your message has been sent. We will reply soon.")
+            messages.success(request, "Thank you, your message is on its way. We will get back to you soon.")
             return redirect("contact")
     else:
         form = ContactForm()

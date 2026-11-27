@@ -1,40 +1,99 @@
-"""Fixed text used on the home and about pages (taken from the old WordPress site)."""
+"""Fixed text used on the home and about pages.
 
+Edit the wording here, then restart the site. Lists marked "FILL IN" are empty
+on purpose: the section that uses them stays hidden until you add real content.
+"""
+
+# The four steps of every project (home and about pages).
 PROCESS_STEPS = [
-    ("Understanding Your Needs",
-     "We start with a detailed consultation to understand your goals and challenges."),
-    ("Research and Analysis",
-     "Using proven methods, we gather and analyze data to uncover trends, opportunities, and risks."),
-    ("Tailored Recommendations",
-     "We present actionable insights and strategies designed to help you make informed decisions."),
+    ("Listen",
+     "A free first conversation about your goals, your questions and the decision you need to make."),
+    ("Research",
+     "We collect and analyse the data, in the field and from trusted sources, to uncover trends, "
+     "opportunities and risks."),
+    ("Recommend",
+     "You get clear findings and practical recommendations, not a pile of raw data."),
     ("Support",
-     "Our partnership doesn’t end with the final report. We’re here to guide you as you "
-     "implement our recommendations."),
+     "Our work doesn’t stop at the report. We stay with you as you put the recommendations into "
+     "action."),
+]
+
+# Who we help (home page). Each audience is told as a short "you" story.
+AUDIENCES = [
+    {
+        "icon": "compass",
+        "title": "Investors and international companies",
+        "story": "You are considering Cameroon and need to know if the opportunity is real, which "
+                 "city to start in and who you will compete with.",
+        "link_text": "Market entry services",
+        "slug": "lead-generation",
+    },
+    {
+        "icon": "rocket",
+        "title": "Local startups and growing businesses",
+        "story": "You want to launch a product, win more customers or expand to a new region, "
+                 "without betting your budget on guesswork.",
+        "link_text": "Marketing research",
+        "slug": "marketing-research",
+    },
+    {
+        "icon": "heart",
+        "title": "NGOs and development partners",
+        "story": "You need reliable community data to design programmes, prove your impact and "
+                 "convince donors.",
+        "link_text": "Research for nonprofits",
+        "slug": "new-business-innovation",
+    },
+]
+
+# About page: our story in three short chapters (problem, answer, promise).
+ABOUT_STORY = [
+    ("The problem we saw",
+     "Cameroon is full of opportunity. Yet too many good projects start on guesswork: old "
+     "statistics, second-hand opinions, or a model copied from another country. When the "
+     "assumptions are wrong, businesses lose money and NGO programmes miss the people they are "
+     "meant to serve."),
+    ("What we set out to do",
+     "Winning Solutions Market Research was created to close that gap. We go to the field, listen "
+     "to real customers and communities, and combine what we hear with international research "
+     "methods. Then we turn it into recommendations people can act on."),
+    ("Where we are going",
+     "Our ambition is to be the most trusted market research partner in Africa, starting at home "
+     "in Cameroon. Every project we deliver is a step toward that promise."),
 ]
 
 CORE_VALUES = [
-    ("Integrity", "We are committed to providing honest, unbiased insights to help our clients succeed."),
-    ("Excellence", "Our team delivers high-quality research and solutions that exceed expectations."),
-    ("Innovation", "We embrace creativity and technology to provide forward-thinking strategies."),
-    ("Client-Centric Approach",
-     "Your success is our success. We prioritize your goals and needs at every step."),
+    ("check", "Integrity", "Honest, unbiased findings, even when they are not what you hoped to hear."),
+    ("star", "Excellence", "Careful methods and high-quality work you can rely on and defend."),
+    ("bulb", "Innovation", "We use new tools and fresh thinking to answer your questions better."),
+    ("people", "Client first", "Your goals guide every step. Your success is how we measure ours."),
 ]
 
 DIFFERENTIATORS = [
-    ("Local Expertise, Global Standards",
-     "We are based in Cameroon, as a result we combine deep local knowledge with internationally "
-     "recognized research methodologies to provide unmatched insights."),
-    ("Tailored Solutions for Every Business",
-     "We understand that no two businesses are alike. Our research and strategies are customized "
-     "to fit your unique needs, goals, and challenges."),
-    ("Comprehensive Services",
-     "From industry analysis to competitor benchmarking and consumer behavior studies, we offer a "
-     "full suite of market research solutions."),
-    ("Commitment to Results",
-     "We don’t just deliver data; we provide actionable recommendations to help you make informed "
-     "decisions and achieve tangible results."),
+    ("pin", "Local knowledge, global standards",
+     "We are based in Cameroon and know its markets from the inside, and we apply internationally "
+     "recognised research methods."),
+    ("tools", "Built around your decision",
+     "No two organisations are alike. Every study is designed around your goals, your questions "
+     "and your budget."),
+    ("layers", "Everything in one place",
+     "From feasibility studies to competitor benchmarking and consumer research, one team covers "
+     "the full journey."),
+    ("flag", "Focused on results",
+     "We don’t just hand over data. We give you clear recommendations and help you act on them."),
 ]
 
+# FILL IN: key figures shown on the home page, e.g. ("40+", "studies delivered").
+# Only add numbers you can prove. The section stays hidden while this list is empty.
+KEY_FIGURES = [
+    # ("[number]", "projects completed"),
+    # ("[number]", "people surveyed"),
+    # ("[number]", "sectors covered"),
+]
+
+# Client testimonials, kept word for word from the old website.
+# FILL IN: confirm each one is from a real client who agreed to be quoted, and add
+# a name or company where the client allows it.
 TESTIMONIALS = [
     {
         "quote": "WS Market Research delivered exactly what we needed to make an informed investment "

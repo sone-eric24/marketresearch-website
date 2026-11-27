@@ -1,17 +1,18 @@
 {% extends "base.html" %}
 {% block title %}Contact us – {{ site.name }}{% endblock %}
-{% block description %}Contact WS Market Research in Yaoundé, Cameroon. Call {{ site.phone }} or email {{ site.email }}.{% endblock %}
+{% block description %}Book a free consultation with WS Market Research in Yaoundé, Cameroon. Call or WhatsApp {{ site.phone }}, or email {{ site.email }}.{% endblock %}
 {% block content %}
 <section class="page-head">
   <div class="wrap">
-    <p class="eyebrow">Contact</p>
-    <h1>Let’s talk about your project</h1>
+    <p class="eyebrow">Contact us</p>
+    <h1>Tell us about your project</h1>
+    <p class="lead">Share the decision you are facing. We will suggest the research that fits, in a free first consultation with no obligation.</p>
   </div>
 </section>
 <section class="section">
   <div class="wrap split">
     <div>
-      {% for m in messages %}<p class="notice">{{ m }}</p>{% endfor %}
+      {% for m in messages %}<p class="notice" role="status">{{ m }}</p>{% endfor %}
       <form method="post" class="form" novalidate>
         {% csrf_token %}
         {% if form.non_field_errors %}<p class="error">{{ form.non_field_errors|join:" " }}</p>{% endif %}
@@ -19,10 +20,11 @@
           {% if field.name == "website" %}
             <div class="hp" aria-hidden="true"><label for="{{ field.id_for_label }}">Leave this empty</label>{{ field }}</div>
           {% else %}
-            <p>
+            <p class="field">
               <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+              {% if field.help_text %}<span class="hint" id="{{ field.id_for_label }}-hint">{{ field.help_text }}</span>{% endif %}
               {{ field }}
-              {% if field.errors %}<span class="error">{{ field.errors|join:" " }}</span>{% endif %}
+              {% if field.errors %}<span class="error" role="alert">{{ field.errors|join:" " }}</span>{% endif %}
             </p>
           {% endif %}
         {% endfor %}
@@ -30,16 +32,15 @@
       </form>
     </div>
     <div>
-      <div class="box">
-        <h2 class="h3">Our office</h2>
-        <p>{{ site.address }}</p>
-        <h2 class="h3">Work hours</h2>
-        <p>{{ site.hours_week }}<br>{{ site.hours_weekend }}</p>
-        <h2 class="h3">Phone &amp; WhatsApp</h2>
-        <p><a href="tel:{{ site.phone_link }}">{{ site.phone }}</a> · <a href="{{ site.whatsapp_link }}" rel="noopener">WhatsApp</a></p>
-        <h2 class="h3">Email</h2>
-        <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
-        <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Jouvence+Yaound%C3%A9+Cameroon" rel="noopener">Open in Google Maps →</a></p>
+      <div class="box contact-card">
+        <h2 class="h3">Prefer to talk?</h2>
+        <ul class="plain contact-list">
+          <li>{% include "content/_icon.html" with name="phone" %}<span><strong>Phone</strong><a href="tel:{{ site.phone_link }}">{{ site.phone }}</a></span></li>
+          <li>{% include "content/_icon.html" with name="chat" %}<span><strong>WhatsApp</strong><a href="{{ site.whatsapp_link }}" rel="noopener">Send us a message</a></span></li>
+          <li>{% include "content/_icon.html" with name="mail" %}<span><strong>Email</strong><a href="mailto:{{ site.email }}">{{ site.email }}</a></span></li>
+          <li>{% include "content/_icon.html" with name="pin" %}<span><strong>Office</strong>{{ site.address }}<br><a href="https://www.google.com/maps/search/?api=1&amp;query=Jouvence+Yaound%C3%A9+Cameroon" rel="noopener">Open in Google Maps</a></span></li>
+          <li>{% include "content/_icon.html" with name="clock" %}<span><strong>Opening hours</strong>{{ site.hours_week }}<br>{{ site.hours_weekend }}</span></li>
+        </ul>
       </div>
     </div>
   </div>

@@ -3,9 +3,9 @@
 {% block content %}
 <section class="page-head">
   <div class="wrap narrow">
-    <h1>Page not found</h1>
-    <p class="lead">The page you are looking for doesn’t exist or has moved.</p>
-    <p><a class="btn btn-accent" href="{% url 'home' %}">Go to the home page</a></p>
+    <h1>We couldn’t find that page</h1>
+    <p class="lead">It may have moved, or the link may be out of date. These pages can help you get back on track.</p>
+    <p class="hero-actions"><a class="btn btn-primary" href="{% url 'home' %}">Go to the home page</a> <a class="btn btn-outline" href="{% url 'service_list' %}">See our services</a></p>
   </div>
 </section>
 {% endblock %}
