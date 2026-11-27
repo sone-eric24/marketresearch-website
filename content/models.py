@@ -75,6 +75,7 @@ class Service(models.Model):
         ("shield", "Shield (compliance)"),
         ("megaphone", "Megaphone (digital marketing)"),
         ("heart", "Heart (nonprofits)"),
+        ("clipboard", "Clipboard (field data collection)"),
         ("search", "Magnifying glass (other research)"),
     ]
 
