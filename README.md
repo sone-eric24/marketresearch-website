@@ -78,6 +78,11 @@ folder: hackers often hide malicious code there. `.gitignore` blocks `.php` file
 Tip for slow networks: before uploading an image, make it smaller (for example
 1200 px wide) with a free tool such as https://squoosh.app.
 
+## Put it online with Render
+
+See **[DEPLOY.md](DEPLOY.md)** for step-by-step instructions, and for cheaper
+hosts you can move to later.
+
 ## Put it online with cPanel ("Setup Python App")
 
 1. **Clean up first.** In File Manager, move the old WordPress files out of

@@ -1,0 +1,51 @@
+# Render "Blueprint": tells Render how to build and run this website.
+# In the Render dashboard choose New > Blueprint and pick this repository.
+# Guide: DEPLOY.md
+services:
+  - type: web
+    name: ws-marketresearch
+    runtime: python
+    # A persistent disk (needed so the database and uploads survive deploys)
+    # only works on paid plans. "starter" is the cheapest one.
+    plan: starter
+    region: frankfurt          # closest Render region to Cameroon
+    buildCommand: bash bin/build.sh
+    startCommand: bash bin/start.sh
+    healthCheckPath: /robots.txt
+    autoDeploy: true           # a new push to the main branch updates the site
+    disk:
+      name: data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: DJANGO_DEBUG
+        value: "False"
+      - key: DJANGO_SECRET_KEY
+        generateValue: true    # Render makes a long random key for you
+      - key: DJANGO_DB_PATH
+        value: /var/data/db.sqlite3
+      - key: DJANGO_MEDIA_ROOT
+        value: /var/data/media
+      - key: DJANGO_ALLOWED_HOSTS
+        value: ws-marketresearch.com,www.ws-marketresearch.com
+      - key: DJANGO_CSRF_TRUSTED_ORIGINS
+        value: https://ws-marketresearch.com,https://www.ws-marketresearch.com
+      - key: WEB_CONCURRENCY
+        value: "2"
+      # You type these in the dashboard when Render asks (sync: false = secret).
+      - key: DJANGO_SUPERUSER_USERNAME
+        sync: false
+      - key: DJANGO_SUPERUSER_EMAIL
+        sync: false
+      - key: DJANGO_SUPERUSER_PASSWORD
+        sync: false
+      - key: CONTACT_EMAIL
+        sync: false
+      - key: EMAIL_HOST
+        sync: false
+      - key: EMAIL_PORT
+        sync: false
+      - key: EMAIL_HOST_USER
+        sync: false
+      - key: EMAIL_HOST_PASSWORD
+        sync: false
