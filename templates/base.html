@@ -6,20 +6,28 @@
 <title>{% block title %}{{ site.name }} – Market Research Firm in Cameroon{% endblock %}</title>
 <meta name="description" content="{% block description %}{{ site.full_name }}: market research, market entry studies, business intelligence and research for nonprofits in Cameroon.{% endblock %}">
 <link rel="canonical" href="{{ request.build_absolute_uri }}">
-<link rel="icon" href="{% static 'img/favicon.svg' %}" type="image/svg+xml">
+<link rel="icon" href="{% static 'favicon.ico' %}" sizes="any">
+<link rel="icon" href="{% static 'img/favicon-32.png' %}" type="image/png" sizes="32x32">
+<link rel="icon" href="{% static 'img/icon-192.png' %}" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="{% static 'img/apple-touch-icon.png' %}">
+<meta name="theme-color" content="#006400">
 <link rel="stylesheet" href="{% static 'css/site.css' %}">
 <meta property="og:site_name" content="{{ site.name }}">
 <meta property="og:title" content="{% block og_title %}{{ site.name }}{% endblock %}">
 <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta property="og:image" content="{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'img/og-image.png' %}{% endblock %}">
+<meta property="og:image:alt" content="{{ site.name }} logo">
+<meta name="twitter:card" content="summary_large_image">
 {% block head %}{% endblock %}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<div class="brand-stripe" aria-hidden="true"></div>
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="logo" href="{% url 'home' %}" aria-label="{{ site.name }} home">
-      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="7" fill="#0b4f6c"/><path d="M8 24V15M14 24V10M20 24v-7M26 24V8" stroke="#f5b700" stroke-width="3" stroke-linecap="round"/></svg>
-      <span>WS <strong>Market Research</strong></span>
+      <img src="{% static 'img/logo.png' %}" alt="{{ site.name }}" width="153" height="72">
     </a>
     {% with path=request.path %}
     <nav class="main-nav" aria-label="Main">
@@ -42,7 +50,7 @@
 <footer class="site-footer">
   <div class="wrap footer-grid">
     <div>
-      <p class="footer-brand">{{ site.name }}</p>
+      <a class="footer-logo" href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" alt="{{ site.name }}" width="153" height="72" loading="lazy"></a>
       <p>{{ site.tagline }}</p>
       <p><a href="{{ site.linkedin }}" rel="noopener">LinkedIn</a> · <a href="{{ site.facebook }}" rel="noopener">Facebook</a></p>
     </div>
