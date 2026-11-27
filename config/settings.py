@@ -37,6 +37,15 @@ CSRF_TRUSTED_ORIGINS = env_list(
     "" if DEBUG else "https://ws-marketresearch.com,https://www.ws-marketresearch.com",
 )
 
+# Some hosts (Render, for example) tell the app its own address, like
+# "my-site.onrender.com". If they do, allow it automatically so the site works
+# before your own domain is connected.
+for _host_var in ("RENDER_EXTERNAL_HOSTNAME", "EXTRA_ALLOWED_HOST"):
+    _host = os.environ.get(_host_var, "").strip()
+    if _host and _host not in ALLOWED_HOSTS:
+        ALLOWED_HOSTS.append(_host)
+        CSRF_TRUSTED_ORIGINS.append(f"https://{_host}")
+
 if not DEBUG:
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
     # Off by default: on cPanel use Domains > "Force HTTPS Redirect" instead, which
@@ -98,6 +107,8 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 # --- Database -------------------------------------------------------------------
 # SQLite is a single file and is plenty for a company website.
+# On a host where the code folder is wiped at every deploy (Render, Docker),
+# set DJANGO_DB_PATH to a file on a persistent disk, e.g. /var/data/db.sqlite3.
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -134,7 +145,9 @@ STORAGES = {
     },
 }
 MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
+# Where uploaded images are kept. Like the database, point this at a persistent
+# disk on hosts that wipe the code folder, e.g. DJANGO_MEDIA_ROOT=/var/data/media.
+MEDIA_ROOT = Path(os.environ.get("DJANGO_MEDIA_ROOT", BASE_DIR / "media"))
 
 # --- Email (contact form) -------------------------------------------------------------
 # Messages are always saved in the admin. They are also emailed when SMTP is set.
