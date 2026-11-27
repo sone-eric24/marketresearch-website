@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Market research firm · Yaoundé, Cameroon</p>
+    <h1>Unlock Cameroon’s market potential with data-driven insights</h1>
+    <p class="lead">We deliver precise insights and practical strategies that help startups, established companies and nonprofit organisations reach their targets in Cameroon.</p>
+    <div class="hero-actions">
+      <a class="btn btn-accent" href="{% url 'contact' %}">Get a free consultation</a>
+      <a class="btn btn-ghost" href="{% url 'service_list' %}">Our services</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <p class="eyebrow">What we do</p>
+    <h2>A wide range of business intelligence services</h2>
+    <div class="grid three">
+      <div class="box">
+        <h3>Market Entry Services</h3>
+        <ul><li>Market feasibility studies</li><li>Competitive analysis</li><li>Consumer behaviour research</li></ul>
+      </div>
+      <div class="box">
+        <h3>Business Intelligence</h3>
+        <ul><li>Prediction and trend forecasting</li><li>Industry trend reports</li><li>Reputation management</li></ul>
+      </div>
+      <div class="box">
+        <h3>Research for Nonprofits</h3>
+        <ul><li>Donor mapping</li><li>Social impact analysis</li><li>Needs assessments</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">Who we are</p>
+      <h2>Your gateway to market success in Cameroon</h2>
+      <p>As a core mission, WS Market Research Firm works to deliver precise insights and implementable strategies to businesses. Our research solutions act as growth engines that help both startups and nonprofit organisations reach their targets.</p>
+      <p><a href="{% url 'about' %}">More about us →</a></p>
+    </div>
+    <div>
+      <h3>How we work</h3>
+      <ol class="steps">
+        {% for title, text in process_steps %}<li><strong>{{ title }}</strong><span>{{ text }}</span></li>{% endfor %}
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <p class="eyebrow">Services at a glance</p>
+    <h2>How we can help</h2>
+    <div class="grid three">
+      {% for s in services %}
+      <a class="box link-box" href="{{ s.get_absolute_url }}">
+        <h3>{{ s.title }}</h3>
+        <p>{{ s.summary }}</p>
+        <span class="more">View details →</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% if case_studies %}
+<section class="section alt">
+  <div class="wrap">
+    <p class="eyebrow">Recent work</p>
+    <h2>Our latest case studies</h2>
+    <div class="grid three">
+      {% for c in case_studies %}
+      <a class="box link-box" href="{{ c.get_absolute_url }}">
+        <p class="meta">{{ c.category_list|first }}</p>
+        <h3>{{ c.title }}</h3>
+        <span class="more">Read the case study →</span>
+      </a>
+      {% endfor %}
+    </div>
+    <p class="center"><a class="btn btn-ghost-dark" href="{% url 'casestudy_list' %}">All case studies</a></p>
+  </div>
+</section>
+{% endif %}
+
+<section class="section">
+  <div class="wrap">
+    <p class="eyebrow">Testimonials</p>
+    <h2>What our clients say</h2>
+    <div class="grid two">
+      {% for t in testimonials %}
+      <figure class="quote">
+        <blockquote>“{{ t.quote }}”</blockquote>
+        <figcaption><strong>{{ t.name }}</strong><br>{{ t.role }}</figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% if articles %}
+<section class="section alt">
+  <div class="wrap">
+    <p class="eyebrow">Latest insights</p>
+    <h2>From our blog</h2>
+    <div class="grid three">
+      {% for a in articles %}{% include "content/_article_card.html" %}{% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% include "content/_cta.html" %}
+{% endblock %}

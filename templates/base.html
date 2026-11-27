@@ -1,0 +1,72 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}{{ site.name }} – Market Research Firm in Cameroon{% endblock %}</title>
+<meta name="description" content="{% block description %}{{ site.full_name }}: market research, market entry studies, business intelligence and research for nonprofits in Cameroon.{% endblock %}">
+<link rel="canonical" href="{{ request.build_absolute_uri }}">
+<link rel="icon" href="{% static 'img/favicon.svg' %}" type="image/svg+xml">
+<link rel="stylesheet" href="{% static 'css/site.css' %}">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:title" content="{% block og_title %}{{ site.name }}{% endblock %}">
+<meta property="og:type" content="{% block og_type %}website{% endblock %}">
+{% block head %}{% endblock %}
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="{% url 'home' %}" aria-label="{{ site.name }} home">
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="7" fill="#0b4f6c"/><path d="M8 24V15M14 24V10M20 24v-7M26 24V8" stroke="#f5b700" stroke-width="3" stroke-linecap="round"/></svg>
+      <span>WS <strong>Market Research</strong></span>
+    </a>
+    {% with path=request.path %}
+    <nav class="main-nav" aria-label="Main">
+      <a href="{% url 'home' %}"{% if path == '/' %} aria-current="page"{% endif %}>Home</a>
+      <a href="{% url 'about' %}"{% if path == '/about/' %} aria-current="page"{% endif %}>About</a>
+      <a href="{% url 'service_list' %}"{% if '/services/' in path %} aria-current="page"{% endif %}>Services</a>
+      <a href="{% url 'casestudy_list' %}"{% if '/case-studies/' in path %} aria-current="page"{% endif %}>Case Studies</a>
+      <a href="{% url 'article_list' %}"{% if '/blog/' in path %} aria-current="page"{% endif %}>Insights</a>
+      <a href="{% url 'faq' %}"{% if path == '/faq/' %} aria-current="page"{% endif %}>FAQ</a>
+      <a class="btn btn-small" href="{% url 'contact' %}">Contact</a>
+    </nav>
+    {% endwith %}
+  </div>
+</header>
+
+<main id="main">
+{% block content %}{% endblock %}
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-brand">{{ site.name }}</p>
+      <p>{{ site.tagline }}</p>
+      <p><a href="{{ site.linkedin }}" rel="noopener">LinkedIn</a> · <a href="{{ site.facebook }}" rel="noopener">Facebook</a></p>
+    </div>
+    <div>
+      <p class="footer-title">Company</p>
+      <ul class="plain">
+        <li><a href="{% url 'about' %}">About us</a></li>
+        <li><a href="{% url 'service_list' %}">Services</a></li>
+        <li><a href="{% url 'casestudy_list' %}">Case studies</a></li>
+        <li><a href="{% url 'article_list' %}">Insights</a></li>
+        <li><a href="{% url 'privacy' %}">Privacy policy</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-title">Contact</p>
+      <ul class="plain">
+        <li><a href="tel:{{ site.phone_link }}">{{ site.phone }}</a></li>
+        <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+        <li>{{ site.address }}</li>
+        <li>{{ site.hours_week }}<br>{{ site.hours_weekend }}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap copyright">© {% now "Y" %} {{ site.full_name }}</div>
+</footer>
+</body>
+</html>

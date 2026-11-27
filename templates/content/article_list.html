@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}{% if category %}{{ category.name }} – {% endif %}Insights – {{ site.name }}{% endblock %}
+{% block description %}Articles and market insights about doing business, investing and consumer behaviour in Cameroon.{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">Insights</p>
+    <h1>{% if category %}{{ category.name }}{% else %}Market insights from Cameroon{% endif %}</h1>
+    {% if categories %}
+    <p class="chips">
+      <a href="{% url 'article_list' %}"{% if not category %} aria-current="page"{% endif %}>All</a>
+      {% for c in categories %}<a href="{% url 'article_category' c.slug %}"{% if category == c %} aria-current="page"{% endif %}>{{ c.name }}</a>{% endfor %}
+    </p>
+    {% endif %}
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <div class="grid three">
+      {% for a in page %}{% include "content/_article_card.html" %}{% empty %}<p>No articles yet.</p>{% endfor %}
+    </div>
+    {% if page.has_other_pages %}
+    <nav class="pager" aria-label="Pages">
+      {% if page.has_previous %}<a href="?page={{ page.previous_page_number }}">← Newer</a>{% endif %}
+      <span>Page {{ page.number }} of {{ page.paginator.num_pages }}</span>
+      {% if page.has_next %}<a href="?page={{ page.next_page_number }}">Older →</a>{% endif %}
+    </nav>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

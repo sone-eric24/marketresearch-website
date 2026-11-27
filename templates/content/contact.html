@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Contact us – {{ site.name }}{% endblock %}
+{% block description %}Contact WS Market Research in Yaoundé, Cameroon. Call {{ site.phone }} or email {{ site.email }}.{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">Contact</p>
+    <h1>Let’s talk about your project</h1>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap split">
+    <div>
+      {% for m in messages %}<p class="notice">{{ m }}</p>{% endfor %}
+      <form method="post" class="form" novalidate>
+        {% csrf_token %}
+        {% if form.non_field_errors %}<p class="error">{{ form.non_field_errors|join:" " }}</p>{% endif %}
+        {% for field in form %}
+          {% if field.name == "website" %}
+            <div class="hp" aria-hidden="true"><label for="{{ field.id_for_label }}">Leave this empty</label>{{ field }}</div>
+          {% else %}
+            <p>
+              <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+              {{ field }}
+              {% if field.errors %}<span class="error">{{ field.errors|join:" " }}</span>{% endif %}
+            </p>
+          {% endif %}
+        {% endfor %}
+        <button class="btn btn-accent" type="submit">Send message</button>
+      </form>
+    </div>
+    <div>
+      <div class="box">
+        <h2 class="h3">Our office</h2>
+        <p>{{ site.address }}</p>
+        <h2 class="h3">Work hours</h2>
+        <p>{{ site.hours_week }}<br>{{ site.hours_weekend }}</p>
+        <h2 class="h3">Phone &amp; WhatsApp</h2>
+        <p><a href="tel:{{ site.phone_link }}">{{ site.phone }}</a> · <a href="{{ site.whatsapp_link }}" rel="noopener">WhatsApp</a></p>
+        <h2 class="h3">Email</h2>
+        <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+        <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Jouvence+Yaound%C3%A9+Cameroon" rel="noopener">Open in Google Maps →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

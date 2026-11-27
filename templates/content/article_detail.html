@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}{{ article.title }} – {{ site.name }}{% endblock %}
+{% block description %}{{ article.meta_description|default:article.excerpt|truncatechars:160 }}{% endblock %}
+{% block og_title %}{{ article.title }}{% endblock %}
+{% block og_type %}article{% endblock %}
+{% block content %}
+<article>
+  <header class="page-head">
+    <div class="wrap narrow">
+      <p class="eyebrow"><a href="{% url 'article_list' %}">Insights</a>{% if article.category %} · <a href="{% url 'article_category' article.category.slug %}">{{ article.category.name }}</a>{% endif %}</p>
+      <h1>{{ article.title }}</h1>
+      <p class="meta"><time datetime="{{ article.published_at|date:'c' }}">{{ article.published_at|date:"j F Y" }}</time> · {{ article.reading_minutes }} min read</p>
+    </div>
+  </header>
+  <div class="section">
+    <div class="wrap narrow prose">
+      {% if article.featured_image %}<img class="hero-img" src="{{ article.featured_image.url }}" alt="" decoding="async">{% endif %}
+      {{ article.body|safe }}
+    </div>
+  </div>
+</article>
+{% if recent %}
+<section class="section alt">
+  <div class="wrap">
+    <h2>Keep reading</h2>
+    <div class="grid three">{% for a in recent %}{% include "content/_article_card.html" %}{% endfor %}</div>
+  </div>
+</section>
+{% endif %}
+{% include "content/_cta.html" %}
+{% endblock %}

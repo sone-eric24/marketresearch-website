@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Services – {{ site.name }}{% endblock %}
+{% block description %}Market entry studies, marketing research, business intelligence, consultation, regulatory compliance support, digital marketing and research for nonprofits in Cameroon.{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">Our services</p>
+    <h1>We provide a wide range of business services</h1>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap grid two">
+    {% for s in services %}
+    <a class="box link-box" href="{{ s.get_absolute_url }}">
+      <h2 class="h3">{{ s.title }}</h2>
+      <p>{{ s.summary }}</p>
+      <span class="more">View details →</span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% include "content/_cta.html" %}
+{% endblock %}
