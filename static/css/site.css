@@ -311,3 +311,33 @@ a.more:hover { text-decoration: underline; }
 .site-footer .contact-list .icon { color: var(--accent-hover); width: 1.2rem; height: 1.2rem; }
 .site-footer .contact-list li { margin-bottom: .7rem; }
 .copyright { border-top: 1px solid rgba(255, 255, 255, .12); margin-top: 2.2rem; padding-top: 1rem; font-size: .85rem; }
+
+/* --- Pictures: service illustrations (static/img/services) and photos (static/img/photos) --- */
+.service-art { width: calc(100% + 3rem); max-width: none; margin: -1.5rem -1.5rem 1.2rem; aspect-ratio: 400 / 260; height: auto; border-radius: var(--radius) var(--radius) 0 0; }
+.service-card { overflow: hidden; }
+
+.story-card { flex-direction: column; padding: 0; overflow: hidden; gap: 0; }
+.story-card-art { width: 100%; aspect-ratio: 400 / 260; height: auto; }
+.story-card-body { padding: 1.4rem 1.6rem 1.6rem; }
+.with-icon { display: flex; align-items: center; gap: .8rem; }
+.with-icon .icon-badge { margin: 0; width: 2.6rem; height: 2.6rem; }
+@media (min-width: 900px) { .story-card-art { aspect-ratio: 400 / 220; object-fit: cover; } }
+
+.service-head { align-items: center; }
+.service-hero-art { width: min(100%, 420px); justify-self: center; border-radius: var(--radius); box-shadow: var(--shadow); }
+@media (max-width: 599px) { .service-hero-art { display: block; margin-top: .5rem; } }
+
+.field-grid { align-items: center; }
+.photo { margin: 0; position: relative; }
+.photo img { width: calc(100% - 12px); aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius); box-shadow: 12px 12px 0 var(--accent); }
+.photo figcaption { margin-top: .9rem; font-size: .92rem; color: var(--muted); font-style: italic; }
+.icon-points li { display: flex; gap: .8rem; align-items: flex-start; margin-bottom: 1rem; }
+.icon-points .icon { color: var(--brand); background: var(--brand-tint); border-radius: 10px; padding: .45rem; width: 2.3rem; height: 2.3rem; }
+.icon-points strong { color: var(--navy); }
+
+.process li::before { position: absolute; top: 1.4rem; right: 1.4rem; width: 2rem; height: 2rem; font-size: .8rem; margin: 0; background: var(--navy-tint); color: var(--navy); }
+.process-icon { display: grid !important; place-items: center; width: 3rem; height: 3rem; border-radius: 12px; background: var(--brand); color: #fff !important; margin-bottom: .9rem; }
+.process-icon .icon { width: 1.5rem; height: 1.5rem; }
+@media (min-width: 1040px) { .process li:not(:last-child)::after { top: 2.9rem; } }
+
+.cta { position: relative; isolation: isolate; background: linear-gradient(90deg, rgba(0, 55, 0, .94) 0%, rgba(0, 70, 0, .86) 50%, rgba(0, 70, 0, .62) 100%), var(--cta-photo, none) center 40% / cover no-repeat, var(--brand-dark); }

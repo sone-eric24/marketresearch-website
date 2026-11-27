@@ -39,6 +39,25 @@
   </div>
 </section>
 
+<section class="section field">
+  <div class="wrap split field-grid">
+    <figure class="photo">
+      <img src="{% static 'img/photos/market-cameroon.jpg' %}" alt="Traders selling tomatoes and vegetables at an open-air market in Cameroon" width="900" height="675" loading="lazy" decoding="async">
+      <figcaption>Buying decisions happen in markets, shops and homes. That is where we listen.</figcaption>
+    </figure>
+    <div>
+      <p class="eyebrow">Research on the ground</p>
+      <h2>We go where your customers are</h2>
+      <p class="lead">Desk research only tells part of the story. Our bilingual English and French field teams work across the whole of Cameroon, talking to consumers, traders, businesses and communities.</p>
+      <ul class="plain icon-points">
+        <li>{% include "content/_icon.html" with name="pin" %}<span><strong>Nationwide reach.</strong> Fieldwork in the regions and cities your project needs.</span></li>
+        <li>{% include "content/_icon.html" with name="chat" %}<span><strong>The right language.</strong> English and French, plus interviewers who speak local languages when needed.</span></li>
+        <li>{% include "content/_icon.html" with name="check" %}<span><strong>Data you can trust.</strong> Checked as it comes in, then turned into clear recommendations.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <section class="section alt">
   <div class="wrap">
     <div class="section-head">
@@ -49,7 +68,7 @@
     <div class="grid services">
       {% for s in services %}
       <a class="box link-box service-card" href="{{ s.get_absolute_url }}">
-        <span class="icon-badge">{% include "content/_icon.html" with name=s.icon %}</span>
+        <img class="service-art" src="{% with 'img/services/'|add:s.icon|add:'.svg' as art %}{% static art %}{% endwith %}" alt="" width="400" height="260" loading="lazy" decoding="async">
         <h3>{{ s.title }}</h3>
         <p>{{ s.summary }}</p>
         <span class="more">Read the story {% include "content/_icon.html" with name="arrow" size="sm" %}</span>
@@ -66,7 +85,7 @@
       <h2>Four simple steps, one partner from start to finish</h2>
     </div>
     <ol class="process">
-      {% for title, text in process_steps %}<li><strong>{{ title }}</strong><span>{{ text }}</span></li>{% endfor %}
+      {% for icon, title, text in process_steps %}<li><span class="process-icon">{% include "content/_icon.html" with name=icon %}</span><strong>{{ title }}</strong><span>{{ text }}</span></li>{% endfor %}
     </ol>
   </div>
 </section>

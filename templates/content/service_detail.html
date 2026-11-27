@@ -1,10 +1,12 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}{{ service.title }} – {{ site.name }}{% endblock %}
 {% block description %}{{ service.summary }}{% endblock %}
 {% block og_title %}{{ service.title }}{% endblock %}
 {% block content %}
 <section class="page-head">
-  <div class="wrap">
+  <div class="wrap page-head-grid service-head">
+    <div>
     <p class="eyebrow"><a href="{% url 'service_list' %}">Services</a></p>
     <div class="service-title">
       <span class="icon-badge icon-badge-lg">{% include "content/_icon.html" with name=service.icon %}</span>
@@ -12,6 +14,8 @@
     </div>
     {% if service.headline %}<p class="lead story-hook-lg">{{ service.headline }}</p>{% else %}<p class="lead">{{ service.summary }}</p>{% endif %}
     <p><a class="btn btn-primary" href="{% url 'contact' %}">Talk to us about your project</a></p>
+    </div>
+    <img class="service-hero-art" src="{% with 'img/services/'|add:service.icon|add:'.svg' as art %}{% static art %}{% endwith %}" alt="" width="400" height="260" fetchpriority="high">
   </div>
 </section>
 
