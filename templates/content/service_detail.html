@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}{{ service.title }} – {{ site.name }}{% endblock %}
+{% block description %}{{ service.summary }}{% endblock %}
+{% block og_title %}{{ service.title }}{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div class="wrap">
+    <p class="eyebrow"><a href="{% url 'service_list' %}">Services</a></p>
+    <h1>{{ service.title }}</h1>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap with-sidebar">
+    <div class="prose">{{ service.body|safe }}</div>
+    <aside class="sidebar">
+      <div class="box">
+        <h2 class="h3">Other services</h2>
+        <ul class="plain">{% for s in other_services %}<li><a href="{{ s.get_absolute_url }}">{{ s.title }}</a></li>{% endfor %}</ul>
+      </div>
+      <div class="box box-dark">
+        <h2 class="h3">Have a question?</h2>
+        <p>Get a free consultation with our team.</p>
+        <a class="btn btn-accent" href="{% url 'contact' %}">Contact us</a>
+      </div>
+    </aside>
+  </div>
+</section>
+{% endblock %}

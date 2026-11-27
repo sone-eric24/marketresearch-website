@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}FAQ – {{ site.name }}{% endblock %}
+{% block description %}Answers to common questions about our market research services: timelines, costs, accuracy, confidentiality and more.{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div class="wrap narrow">
+    <p class="eyebrow">Help center</p>
+    <h1>How can we help you?</h1>
+    <p class="lead">Whether you’re exploring new opportunities or seeking clarity on how our services work, here are answers to the questions we receive most often.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap narrow">
+    {% for f in faqs %}
+    <details class="faq"{% if forloop.first %} open{% endif %}>
+      <summary>{{ f.question }}</summary>
+      <div class="prose">{{ f.answer|safe }}</div>
+    </details>
+    {% endfor %}
+    <div class="box box-dark">
+      <h2 class="h3">Still need help?</h2>
+      <p>Call or WhatsApp us on <a href="tel:{{ site.phone_link }}">{{ site.phone }}</a>, or email <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
+    </div>
+  </div>
+</section>
+{% endblock %}

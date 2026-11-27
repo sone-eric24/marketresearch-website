@@ -1,0 +1,8 @@
+<article class="card">
+  {% if a.featured_image %}<a href="{{ a.get_absolute_url }}" tabindex="-1"><img class="card-img" src="{{ a.featured_image.url }}" alt="" loading="lazy" decoding="async"></a>{% endif %}
+  <div class="card-body">
+    <p class="meta">{% if a.category %}{{ a.category.name }} · {% endif %}<time datetime="{{ a.published_at|date:'c' }}">{{ a.published_at|date:"j M Y" }}</time></p>
+    <h3><a href="{{ a.get_absolute_url }}">{{ a.title }}</a></h3>
+    <p>{{ a.excerpt|truncatechars:170 }}</p>
+  </div>
+</article>

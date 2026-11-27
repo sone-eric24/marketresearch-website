@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}{{ case.title }} – {{ site.name }}{% endblock %}
+{% block description %}{{ case.summary|truncatechars:160 }}{% endblock %}
+{% block og_title %}{{ case.title }}{% endblock %}
+{% block og_type %}article{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div class="wrap narrow">
+    <p class="eyebrow"><a href="{% url 'casestudy_list' %}">Case studies</a>{% if case.categories %} · {{ case.categories }}{% endif %}</p>
+    <h1>{{ case.title }}</h1>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap narrow prose">
+    {% if case.featured_image %}<img class="hero-img" src="{{ case.featured_image.url }}" alt="" loading="lazy" decoding="async">{% endif %}
+    {{ case.body|safe }}
+  </div>
+</section>
+{% if other_cases %}
+<section class="section alt">
+  <div class="wrap">
+    <h2>More case studies</h2>
+    <div class="grid three">
+      {% for c in other_cases %}<a class="box link-box" href="{{ c.get_absolute_url }}"><h3>{{ c.title }}</h3><span class="more">Read →</span></a>{% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+{% include "content/_cta.html" %}
+{% endblock %}

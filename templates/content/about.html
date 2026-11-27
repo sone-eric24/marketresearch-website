@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}About us – {{ site.name }}{% endblock %}
+{% block description %}{{ site.full_name }} is a Cameroon-based market research firm combining local expertise with global research standards.{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">Who we are</p>
+    <h1>Your gateway to market success in Cameroon</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap narrow">
+    <p class="lead">Here at Winning Solutions Market Research Firm, we believe that every successful business decision starts with accurate insights. We are a trusted partner to startups, established companies, and nonprofit organizations.</p>
+    <p>WS Market Research specializes in delivering data-driven strategies that help our clients navigate the complexities of the Cameroonian market. Whether you're entering a new industry or expanding your footprint, we’re here to ensure your journey is informed, strategic, and impactful.</p>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="wrap grid two">
+    <div class="box"><h2>Our mission</h2><p>Empowering businesses with actionable market intelligence to unlock their full potential in Cameroon and beyond.</p></div>
+    <div class="box"><h2>Our vision</h2><p>To be the most trusted market research partner in Africa, driving innovation, growth, and sustainable success for our clients.</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2>Our core values</h2>
+    <div class="grid four">
+      {% for title, text in core_values %}<div class="box"><h3>{{ title }}</h3><p>{{ text }}</p></div>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="wrap">
+    <h2>What makes us different</h2>
+    <div class="grid two">
+      {% for title, text in differentiators %}<div class="box"><h3>{{ title }}</h3><p>{{ text }}</p></div>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap narrow">
+    <h2>Our process</h2>
+    <ol class="steps">
+      {% for title, text in process_steps %}<li><strong>{{ title }}</strong><span>{{ text }}</span></li>{% endfor %}
+    </ol>
+    <p>We’re more than a market research firm—we’re your strategic partner in navigating the Cameroonian market with confidence and clarity.</p>
+  </div>
+</section>
+
+{% include "content/_cta.html" %}
+{% endblock %}

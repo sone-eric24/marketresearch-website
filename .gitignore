@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Django
+db.sqlite3
+db.sqlite3-journal
+staticfiles/
+media/*
+!media/uploads/
+media/uploads/*
+!media/uploads/.gitkeep
+
+# Secrets – never commit these
+.env
+*.sql
+*.sql.zip
+*.zip
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+__MACOSX/
