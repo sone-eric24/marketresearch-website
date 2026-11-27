@@ -12,8 +12,8 @@ SERVICE = {
     "title": "Field Data Collection",
     "icon": "clipboard",
     "order": 8,
-    "summary": "Your team on the ground in Cameroon. We collect reliable field data for international "
-               "research agencies and local organisations, to your specifications.",
+    "summary": "Your team on the ground anywhere in Cameroon. We collect reliable field data for "
+               "international research agencies, companies and NGOs, exactly the way your study needs it.",
     "headline": "Your agency has a study to run in Cameroon, but no team on the ground.",
     "challenge": (
         "You have won a multi-country project, or a client needs answers from Cameroon. Flying a "
@@ -24,12 +24,14 @@ SERVICE = {
     "journey": (
         "Review your study: We go through your questionnaire, sample and timeline with you, and "
         "suggest adjustments so they work in the Cameroonian context.\n"
-        "Prepare the field: We recruit and brief interviewers for your project and plan the "
-        "fieldwork across the locations you need.\n"
-        "Collect the data: Our team carries out the interviews, surveys or group discussions you "
-        "specify, and keeps you updated on progress as fieldwork moves forward.\n"
+        "Prepare the field: We plan fieldwork in the regions and cities you need, anywhere in "
+        "Cameroon, and brief a bilingual English and French team. If your study needs a local "
+        "language, we recruit interviewers who speak it.\n"
+        "Collect the data: We use the methods your study calls for, whether face-to-face or "
+        "phone interviews, focus groups or another approach, and keep you updated as fieldwork "
+        "moves forward.\n"
         "Check and deliver: We check the quality of the data as it comes in, then deliver it in "
-        "the format you need."
+        "the format you work with."
     ),
     "outcome": (
         "Reliable data from Cameroon, collected to your specifications and delivered on schedule, "
@@ -44,9 +46,18 @@ SERVICE = {
         "<li>Recruitment, briefing and supervision of field teams.</li>"
         "<li>Quality checks during fieldwork and clean data at delivery.</li>"
         "<li>Confidentiality: we are happy to sign your NDA.</li></ul>"
-        "<h3>For local companies and NGOs</h3>"
-        "<p>Already have a research design and only need the fieldwork done? We collect the "
-        "data for you, so your team can focus on the analysis and the decisions.</p>"
+        "<h3>Built around your study</h3>"
+        "<ul><li><strong>Methods:</strong> the ones your project calls for, chosen with you.</li>"
+        "<li><strong>Coverage:</strong> the whole of Cameroon, in the regions and cities you "
+        "choose.</li>"
+        "<li><strong>Languages:</strong> a bilingual English and French team, plus interviewers "
+        "who speak local languages when your project needs them.</li>"
+        "<li><strong>Data delivery:</strong> in the format your team works with.</li></ul>"
+        "<h3>Open to every client</h3>"
+        "<p>This service is for anyone who needs reliable data from Cameroon: international "
+        "agencies, local companies, NGOs and public bodies. Already have a research design and "
+        "only need the fieldwork done? We collect the data, so your team can focus on the "
+        "analysis and the decisions.</p>"
         "<p><em>Tell us about your study, including the methods, locations, sample size and "
         "timeline, and we will send you a detailed fieldwork proposal.</em></p>"
     ),
@@ -56,9 +67,10 @@ FAQ_ITEM = {
     "question": "Do you work with research agencies based outside Cameroon?",
     "answer": (
         "<p>Yes. International research agencies use us as their field partner in Cameroon. We "
-        "adapt your questionnaire to the local context, run the fieldwork and deliver clean data "
-        "to your specifications. <a href=\"/services/field-data-collection/\">See how field data "
-        "collection works</a>.</p>"
+        "cover the whole country with a bilingual English and French team, and we recruit "
+        "interviewers who speak local languages when a project needs them. Methods and data "
+        "formats follow your study's requirements. <a href=\"/services/field-data-collection/\">"
+        "See how field data collection works</a>.</p>"
     ),
     "order": 9,
 }
